@@ -1,0 +1,76 @@
+{
+  "name": "@mizunashi_mana/manage-bg-mcp",
+  "version": "0.0.1",
+  "description": "\u30d0\u30c3\u30af\u30b0\u30e9\u30a6\u30f3\u30c9\u30d7\u30ed\u30bb\u30b9\u7ba1\u7406MCP\u30b5\u30fc\u30d0 - AI\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u306e\u30c7\u30d0\u30c3\u30b0\u30b5\u30dd\u30fc\u30c8\u306e\u305f\u3081\u306e\u30d0\u30c3\u30af\u30b0\u30e9\u30a6\u30f3\u30c9\u30b8\u30e7\u30d6\u7ba1\u7406\u6a5f\u80fd",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "build": "tsc --declaration && tsc-alias",
+    "dev": "tsc --watch",
+    "test": "vitest --run --coverage",
+    "lint": "git ls-files -- '*.ts' '*.mjs' '*.js' | xargs eslint --cache --fix",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/src/index.js",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "background-process",
+    "process-management",
+    "ai-agent",
+    "debugging"
+  ],
+  "author": "mizunashi-mana",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "inversify": "^7.7.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
+    "@eslint/js": "^9.32.0",
+    "@stylistic/eslint-plugin": "^5.2.2",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.32.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^17.21.2",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.38.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "bin": {
+    "bg-manage-mcp": "./dist/src/index.js"
+  },
+  "files": [
+    "dist/src/**/*.d.ts",
+    "dist/src/**/*.js",
+    "LICENSE",
+    "LICENSE.Apache-2.0.txt",
+    "LICENSE.MPL-2.0.txt",
+    "README.md",
+    "tsconfig.json"
+  ],
+  "homepage": "https://github.com/mizunashi-mana/manage-bg-mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizunashi-mana/manage-bg-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mizunashi-mana/manage-bg-mcp/issues"
+  }
+}
