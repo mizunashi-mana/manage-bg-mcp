@@ -46,7 +46,7 @@
     "jiti": "^2.5.1",
     "tsc-alias": "^1.8.16",
     "typescript": "^5.8.0",
-    "typescript-eslint": "^8.38.0",
+    "typescript-eslint": "^8.39.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   },
