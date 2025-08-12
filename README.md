@@ -1,5 +1,10 @@
 # Background Process Management MCP Server
 
+[![CI](https://github.com/mizunashi-mana/manage-bg-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/mizunashi-mana/manage-bg-mcp/actions/workflows/test.yml)
+[![npm version](https://badge.fury.io/js/@mizunashi_mana%2Fmanage-bg-mcp.svg)](https://www.npmjs.com/package/@mizunashi_mana/manage-bg-mcp)
+[![npm downloads](https://img.shields.io/npm/dm/@mizunashi_mana/manage-bg-mcp.svg)](https://www.npmjs.com/package/@mizunashi_mana/manage-bg-mcp)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MPL--2.0-blue.svg)](https://github.com/mizunashi-mana/manage-bg-mcp/blob/main/LICENSE)
+
 A Model Context Protocol (MCP) server for managing background processes with AI agents.
 
 ## Overview
