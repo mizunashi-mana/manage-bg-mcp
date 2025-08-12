@@ -1,6 +1,6 @@
 {
   "name": "@mizunashi_mana/manage-bg-mcp",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Background process management MCP server - Background job management capabilities for AI agent debugging support",
   "type": "module",
   "main": "dist/src/index.js",
