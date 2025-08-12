@@ -20,6 +20,7 @@ export default defineConfig([
     files: ['script/**/*.ts', 'src/index.ts'],
     rules: {
       'n/no-process-exit': 'off',
+      'n/hashbang': 'off',
     },
   },
 ]);

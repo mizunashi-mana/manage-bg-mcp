@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { parseArgs } from 'node:util';
 import { buildContainer } from '@/container/DIContainer.js';
 import { loadConfig } from '@/services/ConfigProvider.js';
