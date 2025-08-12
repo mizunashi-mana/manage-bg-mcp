@@ -86,7 +86,7 @@ DESCRIPTION:
   ${packageInfoProvider.getDescription()}
 
 USAGE:
-  ${packageInfoProvider.getName()} [options]
+  npx ${packageInfoProvider.getName()} [options]
 
 OPTIONS:
   --version, -v    Show version information
@@ -94,14 +94,10 @@ OPTIONS:
 
 EXAMPLES:
   # Start the MCP server
-  ${packageInfoProvider.getName()}
+  npx ${packageInfoProvider.getName()}
 
   # Show version
-  ${packageInfoProvider.getName()} --version
-
-ENVIRONMENT VARIABLES:
-  NODE_ENV         Set to 'production' for production mode
-  LOG_LEVEL        Set logging level (error, warn, info, debug)
+  npx ${packageInfoProvider.getName()} --version
 
 For more information, visit: ${packageInfoProvider.getHomepage()}
 `);
