@@ -44,34 +44,41 @@ export class ProcessControllerImpl implements ProcessController {
    * @returns Process spawn result
    */
   async spawn(config: ProcessSpawnConfig): Promise<ProcessSpawnResult> {
+    const childProcess = spawn(config.command, config.args ?? [], {
+      cwd: config.cwd,
+      detached: false,
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: config.env ? { ...process.env, ...config.env } : undefined,
+    });
+
+    await new Promise((resolve, reject) => {
+      childProcess.once('error', (error: Error) => {
+        reject(this.getStartError(error));
+      });
+
+      childProcess.once('spawn', () => {
+        resolve(undefined);
+      });
+    });
+
+    if (childProcess.exitCode === -2) {
+      throw new Error('Command not found');
+    }
+    else if (childProcess.exitCode !== null) {
+      throw new Error(`Process exited: ${childProcess.exitCode}`);
+    }
+
+    const pid = childProcess.pid;
+    if (pid === undefined) {
+      throw new Error('Failed to get process PID');
+    }
+
+    this.processes.set(pid, childProcess);
+
     return await new Promise((resolve, reject) => {
-      let childProcess: ChildProcess;
-
-      try {
-        childProcess = spawn(config.command, config.args ?? [], {
-          cwd: config.cwd,
-          detached: false,
-          stdio: ['ignore', 'pipe', 'pipe'],
-          env: config.env ? { ...process.env, ...config.env } : undefined,
-        });
-      }
-      catch (error) {
-        reject(new Error(`Failed to spawn process: ${error instanceof Error ? error.message : String(error)}`));
-        return;
-      }
-
-      const pid = childProcess.pid;
-      if (!pid) {
-        reject(new Error('Failed to get process PID'));
-        return;
-      }
-
-      this.processes.set(pid, childProcess);
-
-      // Set up error handler (catch errors immediately after startup)
       const errorHandler = (error: Error) => {
         this.processes.delete(pid);
-        reject(new Error(`Process spawn error: ${error.message}`));
+        reject(this.getStartError(error));
       };
       childProcess.once('error', errorHandler);
 
@@ -100,6 +107,13 @@ export class ProcessControllerImpl implements ProcessController {
         });
       }, 10);
     });
+  }
+
+  private getStartError(originalError: Error): Error {
+    if (originalError.message.includes('ENOENT')) {
+      return new Error('Command not found');
+    }
+    return originalError;
   }
 
   /**
@@ -141,7 +155,7 @@ export class ProcessControllerImpl implements ProcessController {
       });
 
       // If the process has already exited
-      if (childProcess.killed) {
+      if (childProcess.exitCode !== null || childProcess.killed) {
         clearTimeout(timeout);
         resolve(undefined);
       }

@@ -16,6 +16,7 @@ import { StopHandler } from '@/services/tools/StopHandler.js';
 // Tool input schemas
 const StartToolSchema = z.object({
   command: z.string().describe('Command to run'),
+  args: z.array(z.string()).optional().describe('Command arguments'),
   name: z.string().optional().describe('Optional name for the process'),
   cwd: z.string().optional().describe('Working directory'),
   env: z.record(z.string()).optional().describe('Environment variables'),
