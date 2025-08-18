@@ -1,12 +1,12 @@
 import { inject, injectable } from 'inversify';
 import { type BgProcessManager, BgProcessManagerTag } from '@/services/BgProcessManager.js';
 
-interface StartToolArgs {
+type StartToolArgs = {
   command: string;
   args?: string[];
   cwd?: string;
   env?: Record<string, string>;
-}
+};
 
 @injectable()
 export class StartHandler {

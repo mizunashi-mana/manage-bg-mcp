@@ -1,6 +1,6 @@
 {
   "name": "@mizunashi_mana/manage-bg-mcp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Background process management MCP server - Background job management capabilities for AI agent debugging support",
   "type": "module",
   "main": "dist/src/index.js",
@@ -45,6 +45,8 @@
     "build": "tsc --declaration && tsc-alias",
     "dev": "tsc --watch",
     "test": "vitest --run --coverage",
+    "test:unit": "vitest --run --coverage test/unit",
+    "test:integration": "vitest --run test/integration",
     "lint": "git ls-files -- '*.ts' '*.mjs' '*.js' | xargs eslint --cache --fix",
     "typecheck": "tsc --noEmit",
     "start": "node dist/src/index.js",
@@ -59,6 +61,7 @@
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@eslint/js": "^9.33.0",
+    "@mizunashi_mana/claude-code-hook-sdk": "^6.0.0",
     "@stylistic/eslint-plugin": "^5.2.3",
     "@types/node": "^24.2.1",
     "@vitest/coverage-v8": "^3.2.4",
@@ -68,7 +71,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-n": "^17.21.3",
     "eslint-plugin-promise": "^7.2.1",
-    "eslint-plugin-unused-imports": "^4.1.4",
+    "eslint-plugin-unused-imports": "^4.2.0",
     "globals": "^16.3.0",
     "jiti": "^2.5.1",
     "tsc-alias": "^1.8.16",
